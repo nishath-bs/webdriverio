@@ -1,0 +1,36 @@
+/*
+ * Maintains a counter for each driver to get consistent and
+ * unique screenshot names for percy
+ */
+class PercyCaptureMap {
+    #map = {};
+    increment(sessionName, eventName) {
+        if (!this.#map[sessionName]) {
+            this.#map[sessionName] = {};
+        }
+        if (!this.#map[sessionName][eventName]) {
+            this.#map[sessionName][eventName] = 0;
+        }
+        this.#map[sessionName][eventName]++;
+    }
+    decrement(sessionName, eventName) {
+        if (!this.#map[sessionName] || !this.#map[sessionName][eventName]) {
+            return;
+        }
+        this.#map[sessionName][eventName]--;
+    }
+    getName(sessionName, eventName) {
+        return `${sessionName}-${eventName}-${this.get(sessionName, eventName)}`;
+    }
+    get(sessionName, eventName) {
+        if (!this.#map[sessionName]) {
+            return 0;
+        }
+        if (!this.#map[sessionName][eventName]) {
+            return 0;
+        }
+        return this.#map[sessionName][eventName] - 1;
+    }
+}
+export default PercyCaptureMap;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUGVyY3lDYXB0dXJlTWFwLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vc3JjL1BlcmN5L1BlcmN5Q2FwdHVyZU1hcC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7O0dBR0c7QUFFSCxNQUFNLGVBQWU7SUFDakIsSUFBSSxHQUFRLEVBQUUsQ0FBQTtJQUVkLFNBQVMsQ0FBQyxXQUFtQixFQUFFLFNBQWlCO1FBQzVDLElBQUksQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLFdBQVcsQ0FBQyxFQUFFLENBQUM7WUFDMUIsSUFBSSxDQUFDLElBQUksQ0FBQyxXQUFXLENBQUMsR0FBRyxFQUFFLENBQUE7UUFDL0IsQ0FBQztRQUVELElBQUksQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLFdBQVcsQ0FBQyxDQUFDLFNBQVMsQ0FBQyxFQUFFLENBQUM7WUFDckMsSUFBSSxDQUFDLElBQUksQ0FBQyxXQUFXLENBQUMsQ0FBQyxTQUFTLENBQUMsR0FBRyxDQUFDLENBQUE7UUFDekMsQ0FBQztRQUVELElBQUksQ0FBQyxJQUFJLENBQUMsV0FBVyxDQUFDLENBQUMsU0FBUyxDQUFDLEVBQUUsQ0FBQTtJQUN2QyxDQUFDO0lBRUQsU0FBUyxDQUFDLFdBQW1CLEVBQUUsU0FBaUI7UUFDNUMsSUFBSSxDQUFDLElBQUksQ0FBQyxJQUFJLENBQUMsV0FBVyxDQUFDLElBQUksQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLFdBQVcsQ0FBQyxDQUFDLFNBQVMsQ0FBQyxFQUFFLENBQUM7WUFDaEUsT0FBTTtRQUNWLENBQUM7UUFFRCxJQUFJLENBQUMsSUFBSSxDQUFDLFdBQVcsQ0FBQyxDQUFDLFNBQVMsQ0FBQyxFQUFFLENBQUE7SUFDdkMsQ0FBQztJQUVELE9BQU8sQ0FBQyxXQUFtQixFQUFFLFNBQWlCO1FBQzFDLE9BQU8sR0FBRyxXQUFXLElBQUksU0FBUyxJQUFJLElBQUksQ0FBQyxHQUFHLENBQUMsV0FBVyxFQUFFLFNBQVMsQ0FBQyxFQUFFLENBQUE7SUFDNUUsQ0FBQztJQUVELEdBQUcsQ0FBQyxXQUFtQixFQUFFLFNBQWlCO1FBQ3RDLElBQUksQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLFdBQVcsQ0FBQyxFQUFFLENBQUM7WUFDMUIsT0FBTyxDQUFDLENBQUE7UUFDWixDQUFDO1FBRUQsSUFBSSxDQUFDLElBQUksQ0FBQyxJQUFJLENBQUMsV0FBVyxDQUFDLENBQUMsU0FBUyxDQUFDLEVBQUUsQ0FBQztZQUNyQyxPQUFPLENBQUMsQ0FBQTtRQUNaLENBQUM7UUFFRCxPQUFPLElBQUksQ0FBQyxJQUFJLENBQUMsV0FBVyxDQUFDLENBQUMsU0FBUyxDQUFDLEdBQUcsQ0FBQyxDQUFBO0lBQ2hELENBQUM7Q0FDSjtBQUVELGVBQWUsZUFBZSxDQUFBIn0=
