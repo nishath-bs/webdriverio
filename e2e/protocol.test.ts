@@ -38,7 +38,7 @@ beforeAll(async () => {
 it('should navigate to a page and get page info', async () => {
     await browser.navigateTo('http://guinea-pig.webdriver.io')
     expect(await browser.getTitle()).toBe('WebdriverJS Testpage')
-    expect(await browser.getUrl()).toContain('http://guinea-pig.webdriver.io')
+    expect(await browser.getUrl()).toContain('https://guinea-pig.webdriver.io')
     expect(await browser.getPageSource()).toContain('WebdriverJS Testpage')
 
     const elem = await browser.findElement('css selector', '#t')
@@ -47,7 +47,7 @@ it('should navigate to a page and get page info', async () => {
 
 it('should include the hash', async () => {
     await browser.navigateTo('http://guinea-pig.webdriver.io#hash=hello')
-    expect(await browser.getUrl()).toBe('http://guinea-pig.webdriver.io/#hash=hello')
+    expect(await browser.getUrl()).toBe('https://guinea-pig.webdriver.io/#hash=hello')
 })
 
 describe('timeouts', () => {
